@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- res config settings form inherit -->
+        <record id="res_config_settings_view_form_default_image" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.sale.frequent</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="10"/>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='sale_management']/div" position="inside">
+                    <div class="row mt16 o_settings_container">
+                        <div class="o_setting_left_pane">
+                            <label string="Default Image" for="product_default_image"/>
+                            <span class="fa fa-lg fa-image" title="Values set here are website-specific."
+                                  groups="website.group_multi_website"/>
+                            <div class="text-muted">
+                                Add the default image to products.
+                            </div>
+                            <field name="product_default_image" type="base64" widget="image" class="oe_avatar"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
