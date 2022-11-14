@@ -3,8 +3,8 @@
 from odoo import models, fields, api, tools
 
 
-class ProductTemplateInherit(models.Model):
-    """ Inherit Res Config Settings to add default image product field """
+class ProductTemplate(models.Model):
+    """ Inherit Product Template Settings to add default image product from setting """
     _inherit = "product.template"
 
     @api.model_create_multi
@@ -16,4 +16,4 @@ class ProductTemplateInherit(models.Model):
                 if product_default_image:
                     val_list['image_1920'] = product_default_image
 
-        return super(ProductTemplateInherit, self).create(vals_list)
+        return super(ProductTemplate, self).create(vals_list)

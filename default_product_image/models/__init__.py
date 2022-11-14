@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import product_template_inherit, res_config_inherit
+from . import res_config
+from . import product_template
