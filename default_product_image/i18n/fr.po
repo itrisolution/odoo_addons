@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-14 11:50+0000\n"
-"PO-Revision-Date: 2022-11-14 11:50+0000\n"
+"POT-Creation-Date: 2022-11-15 15:52+0000\n"
+"PO-Revision-Date: 2022-11-15 15:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:default_product_image.res_config_settings_view_form_default_image
 msgid ""
 "<span class=\"fa fa-lg fa-image\" title=\"Values set here are website-"
-"specific.\" groups=\"website.group_multi_website\"/>"
+"specific.\"/>"
 msgstr ""
 
 #. module: default_product_image
@@ -36,6 +36,11 @@ msgstr "Paramètres de config"
 #: model:ir.model.fields,field_description:default_product_image.field_res_config_settings__product_default_image
 #: model_terms:ir.ui.view,arch_db:default_product_image.res_config_settings_view_form_default_image
 msgid "Default Image"
+msgstr "Image par défaut"
+
+#. module: default_product_image
+#: model_terms:ir.ui.view,arch_db:default_product_image.res_config_settings_view_form_default_image
+msgid "Default image"
 msgstr "Image par défaut"
 
 #. module: default_product_image
