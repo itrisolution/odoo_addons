@@ -8,7 +8,7 @@
     'author': 'Imal-Tech',
     'website': 'https://www.imal-tech.com',
     'category': 'Sales',
-    'version': '14.0.1.0.0',
+    'version': '16.0.1.0.0',
     'depends': ['base', 'sale_management'],
     'data': [
         'views/res_config_views.xml',

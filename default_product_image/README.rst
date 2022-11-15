@@ -2,7 +2,7 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
-Default product image v14
+Default product image v16
 ===========================
 You my have some issue to customize the default image of your products,
 this module will helpe you to add default image (your logo or custom image) to your products.
@@ -25,7 +25,7 @@ Company
 Credits
 -------
 * Developers:
-                Version 14: Imal-tech team @imaltech
+                Version 16: Imal-tech team @imaltech
 
 Contacts
 --------
