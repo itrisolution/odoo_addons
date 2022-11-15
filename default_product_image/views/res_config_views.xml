@@ -8,12 +8,12 @@
             <field name="priority" eval="10"/>
             <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@data-key='sale_management']/div" position="inside">
+                <xpath expr="//div[@data-key='sale_management']" position="inside">
+                    <h2>Default image</h2>
                     <div class="row mt16 o_settings_container">
-                        <div class="o_setting_left_pane">
+                        <div class="col-12 col-lg-6 o_setting_box" id="variant_options">
                             <label string="Default Image" for="product_default_image"/>
-                            <span class="fa fa-lg fa-image" title="Values set here are website-specific."
-                                  groups="website.group_multi_website"/>
+                            <span class="fa fa-lg fa-image" title="Values set here are website-specific."/>
                             <div class="text-muted">
                                 Add the default image to products.
                             </div>
