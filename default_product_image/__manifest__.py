@@ -14,4 +14,8 @@
         'views/res_config_views.xml',
     ],
     'license': 'LGPL-3',
+    'images': ['static/description/banner.gif'],
+    'installable': True,
+    'application': False,
+    'auto_install': False,
 }
