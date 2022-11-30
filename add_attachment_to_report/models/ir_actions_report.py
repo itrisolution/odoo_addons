@@ -44,10 +44,10 @@ class IrActionsReport(models.Model):
                 # Transform the bytes to streams
                 streams = [io.BytesIO(result)]
                 # Get the modul ids
-                expense_record_ids = self.env[self.model].browse([res_id for res_id in res_ids if res_id])
+                record_ids = self.env[self.model].browse([res_id for res_id in res_ids if res_id])
                 # Get related attachment ids
                 attachment_ids = self.env['ir.attachment'].search(
-                    [('res_id', 'in', expense_record_ids.ids), ('res_model', '=', self.model)])
+                    [('res_id', 'in', record_ids.ids), ('res_model', '=', self.model)])
                 if attachment_ids:
                     for attachment_id in attachment_ids:
                         packet = io.BytesIO()
