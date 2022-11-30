@@ -7,7 +7,7 @@
     'summary': 'Module to help you add attachment to report',
     'author': 'Imal-Tech',
     'website': 'https://www.imal-tech.com',
-    'maintainer': 'NEWAY Solutions',
+    'maintainer': 'Imal-Tech',
     'category': 'Tools',
     'version': '14.0.1.0.0',
     'depends': ['base', 'mail'],
