@@ -7,6 +7,7 @@
     'summary': 'Module to help you add default image to products',
     'author': 'Imal-Tech',
     'website': 'https://www.imal-tech.com',
+    'maintainer': 'Imal-Tech',
     'category': 'Sales',
     'version': '15.0.1.0.0',
     'depends': ['base', 'sale_management'],
