@@ -2,7 +2,7 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
-Default product image v14
+Attachments in reports v14
 ===========================
 You may have some important files in your attachments and you want to merge them within your report,
 this module will help you add your attachments to your report.
