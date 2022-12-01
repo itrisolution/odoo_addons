@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from PyPDF2 import utils
-from odoo.exceptions import UserError
 from odoo import api, fields, models, _
 import base64
 import io
@@ -29,8 +27,10 @@ def _fix_image_transparency(image):
 class IrActionsReport(models.Model):
     _inherit = 'ir.actions.report'
 
-    def _render_qweb_pdf_prepare_streams(self, report_ref, data, res_ids=None):
-        result = super(IrActionsReport, self)._render_qweb_pdf_prepare_streams(report_ref, data, res_ids)
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        # Check for reports only available for invoices.
+        res = super(IrActionsReport, self)._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
+        result = res[0]
         company_id = self.env.user.company_id
         report_sudo = self.sudo()._get_report(report_ref)
         if company_id and company_id.related_model_ids and self.env.user.has_group('add_attachment_to_report.group_attachment_in_print_manager'):
@@ -43,7 +43,7 @@ class IrActionsReport(models.Model):
                             pass
 
                 # Transform the bytes to streams
-                streams = [io.BytesIO(result)]
+                streams = [io.BytesIO(res[0])]
                 # Get the modul ids
                 record_ids = self.env[report_sudo.model].browse([res_id for res_id in res_ids if res_id])
                 # Get related attachment ids
@@ -81,10 +81,7 @@ class IrActionsReport(models.Model):
                 if len(streams) == 1:
                     result = streams[0].getvalue()
                 else:
-                    try:
-                        result = self._merge_pdfs(streams)
-                    except utils.PdfReadError:
-                        raise UserError(_("File is encrypted"))
-
+                    with self._merge_pdfs(streams) as pdf_merged_stream:
+                        result = pdf_merged_stream.getvalue()
                 close_streams(streams)
-        return result
+        return [result, res[1]]

@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Models to print attachments" groups="add_attachment_to_report.group_attachment_in_print_manager">
+                <page string="Modules to print attachments" groups="add_attachment_to_report.group_attachment_in_print_manager">
                     <div class="oe_highlight">
                         <group>
                             <group>
