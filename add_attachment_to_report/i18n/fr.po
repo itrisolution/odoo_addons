@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 21:25+0000\n"
-"PO-Revision-Date: 2022-11-30 21:25+0000\n"
+"POT-Creation-Date: 2022-12-01 22:16+0000\n"
+"PO-Revision-Date: 2022-12-01 22:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,13 +28,13 @@ msgstr "Fichier est crypté"
 
 #. module: add_attachment_to_report
 #: model:ir.model.fields,field_description:add_attachment_to_report.field_res_company__related_model_ids
-msgid "Models"
-msgstr "Modèles"
+msgid "Modules"
+msgstr "Modules"
 
 #. module: add_attachment_to_report
 #: model_terms:ir.ui.view,arch_db:add_attachment_to_report.company_form_view_extension
-msgid "Models to print attachments"
-msgstr "Modèles pour imprimer les pièces jointes"
+msgid "Modules to print attachments"
+msgstr "Modules pour imprimer les pièces jointes"
 
 #. module: add_attachment_to_report
 #: model:res.groups,name:add_attachment_to_report.group_attachment_in_print_manager

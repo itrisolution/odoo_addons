@@ -7,5 +7,4 @@ class ResCompany(models.Model):
     """ Inherit Res Company to add related_model_ids """
     _inherit = 'res.company'
 
-    related_model_ids = fields.Many2many('ir.model', string="Models", domain="[('transient', '=', False), ('is_mail_thread', '=', True)]")
-
+    related_model_ids = fields.Many2many('ir.model', string="Modules", domain="[('transient', '=', False), ('is_mail_thread', '=', True)]")

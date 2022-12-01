@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Add Attachment to Report',
+    'name': 'Attachments in reports',
     'description': """
-            This module will help you to add attachment to report.
+            This module will help you to add attachments to your reports.
         """,
-    'summary': 'Module to help you add attachment to report',
+    'summary': 'Module to help you add attachments to reports',
     'author': 'Imal-Tech',
     'website': 'https://www.imal-tech.com',
     'maintainer': 'Imal-Tech',
@@ -16,7 +16,7 @@
         'views/res_company_views.xml',
     ],
     'license': 'LGPL-3',
-    # 'images': ['static/description/banner.gif'],
+    'images': ['static/description/banner.gif'],
     'installable': True,
     'application': False,
     'auto_install': False,
