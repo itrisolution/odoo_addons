@@ -1,0 +1,21 @@
+#form_cp {
+  display: none;
+}
+
+#success_div {
+  display: none;
+}
+
+.iti.iti--allow-dropdown {
+    width: 100%;
+}
+
+div.error {
+    background-color: #FCC;
+    border: 1px solid #FAA;
+    -webkit-box-shadow: 1px 1px 4px #d52c2c;
+}
+
+span#error-msg {
+    vertical-align: -webkit-baseline-middle;
+}

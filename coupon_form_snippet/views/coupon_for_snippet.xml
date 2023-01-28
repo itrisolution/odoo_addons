@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="carousal_dashboard" inherit_id="website.snippets"
+              name="Caroudal Dashboard">
+        <xpath expr="//div[@id='snippet_effect']/div[hasclass('o_panel_body')]"
+               position="inside">
+            <t t-snippet="coupon_form_snippet.s_carousel_template"
+               t-thumbnail="/coupon_form_snippet/static/src/image/coupon_form_snippet.png"/>
+        </xpath>
+    </template>
+
+    <template id="s_carousel_template" name="Coupon Form">
+        <section class="s_carousel_template pt24 pb24">
+            <div class="container">
+                <h3 class="text-center mb32">Get Your Coupon here</h3>
+                <p class="text-center o_default_snippet_text" id="show_form_cp">
+                    <a href="#" class="btn btn-primary btn-lg s_website_form_send o_default_snippet_text">
+                        <i class="fa fa-ticket"/>
+                        Get Coupon
+                    </a>
+                </p>
+                <div id="form_cp">
+                    <t t-call="coupon_form_snippet.intlTelInput_assets"/>
+                    <form class="billingform o_mark_required" role="form" data-mark="*" name="coupon_form" id="coupon_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"
+                                       for="name">
+                                    <span class="s_website_form_label_content">Name</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input class="form-control s_website_form_input" type="text" id="name" name="name"
+                                           required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"
+                                       for="email">
+                                    <span class="s_website_form_label_content">Email address</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input class="form-control s_website_form_input" type="email" id="email"
+                                           name="email"
+                                           required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"
+                                       for="phone">
+                                    <span class="s_website_form_label_content">Mobile</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm" id="phone_div">
+                                    <input class="form-control s_website_form_input" type="tel" id="phone" name="phone"
+                                           placeholder="e.g. +36 719 24 18" required="required" value="+36"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"
+                                       for="phone">
+                                    <span class="s_website_form_label_content">Promotional coupon</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <select name="coupon_program" id="coupon_program" class="form-control"
+                                            required="required">
+                                        <option/>
+                                        <t t-foreach="coupon_programs" t-as="coupon_program">
+                                            <option t-att-value="coupon_program.id">
+                                                <t t-esc="coupon_program.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"/>
+                                <div class="col-sm">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" value=""
+                                               id="tos_cp_checkbox" required="required"/>
+                                        <label class="custom-control-label" for="tos_cp_checkbox">I accept
+                                            <a data-toggle="modal" data-target="#modal_tos_cp" href="#">TOS</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"/>
+                                <div class="col-sm">
+                                    <span id="error-msg" class="o_hidden text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="col-sm">
+                                <center>
+                                    <button type="submit" id="submit_button"
+                                            class="btn btn-primary btn-lg"
+                                            style="margin-top:5px!important; padding-left: 8% !important; padding-right: 8% !important;">
+                                        Send
+                                    </button>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <t t-call="coupon_form_snippet.tos_coupon_modal"/>
+            <t t-call="coupon_form_snippet.success_coupon"/>
+        </section>
+    </template>
+
+    <template id="intlTelInput_assets">
+        <script src="coupon_form_snippet/static/src/js/intlTelInput.js"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    </template>
+
+    <template id="success_coupon">
+        <div class="success_div" id="success_div">
+            <center>
+                <img src="coupon_form_snippet/static/src/image/congrats_coupon.png" style="width: 20%;"/>
+                <strong><h3>Congratulation !</h3></strong>
+                <p>You will receive the Coupon code in your phone number!.</p>
+            </center>
+        </div>
+    </template>
+
+    <template id="tos_coupon_modal">
+        <!-- Modal popup box -->
+        <div class="modal fade" id="modal_tos_cp" tabindex="-1" role="dialog"
+             aria-labelledby="modal_tos_title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_tos_title">Terms of service</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <strong>Terms and Conditions</strong>
+                        </p>
+                        <p>Our Terms and Conditions were last updated on [___DATE___].</p>
+                        <p>Please read these terms and conditions carefully before using Our Service.</p>
+                        <p>
+                            <strong>Interpretation and Definitions</strong>
+                        </p>
+                        <p>
+                            <strong>Interpretation</strong>
+                        </p>
+                        <p>The words of which the initial letter is capitalized have meanings defined under the
+                            following conditions. The following definitions shall have the same meaning regardless
+                            of whether they appear in singular or in plural.
+                        </p>
+                        <p>
+                            <strong>Definitions</strong>
+                        </p>
+                        <p>For the purposes of these Terms and Conditions:</p>
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong>"Affiliate"</strong>
+                                    means an entity that controls, is controlled by or is under common control with
+                                    a party, where "control" means ownership of 50% or more of the shares, equity
+                                    interest or other securities entitled to vote for election of directors or other
+                                    managing authority.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Account"</strong>
+                                    means a unique account created for You to access our Service or parts of our
+                                    Service.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Company"</strong>
+                                    (referred to as either "the Company", "We", "Us" or "Our" in this Agreement)
+                                    refers to [___COMPANY_INFORMATION___].
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Country"</strong>
+                                    refers to [___COMPANY_COUNTRY___].
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Content"</strong>
+                                    refers to content such as text, images, or other information that can be posted,
+                                    uploaded, linked to or otherwise made available by You, regardless of the form
+                                    of that content.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Device"</strong>
+                                    means any device that can access the Service such as a computer, a cellphone or
+                                    a digital tablet.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Feedback"</strong>
+                                    means feedback, innovations or suggestions sent by You regarding the attributes,
+                                    performance or features of our Service.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Service"</strong>
+                                    refers to the Website.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Terms and Conditions"</strong>
+                                    (also referred as "Terms" or "Terms of Use") mean these Terms and Conditions
+                                    that form the entire agreement between You and the Company regarding the use of
+                                    the Service. This Terms and Conditions Agreement was generated by <a
+                                        href="https://www.termsfeed.com/blog/sample-terms-and-conditions-template/">
+                                    TermsFeed Terms and Conditions Template</a>.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Third-party Social Media Service"</strong>
+                                    means any services or content (including data, information, products or
+                                    services) provided by a third-party that may be displayed, included or made
+                                    available by the Service.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"Website"</strong>
+                                    refers to [___WEBSITE_NAME___], accessible from [___WEBSITE_URL___]
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>"You"</strong>
+                                    means the individual accessing or using the Service, or the company, or other
+                                    legal entity on behalf of which such individual is accessing or using the
+                                    Service, as applicable.
+                                </p>
+                            </li>
+                        </ul>
+                        <p>
+                            <strong>Acknowledgment</strong>
+                        </p>
+                        <p>These are the Terms and Conditions governing the use of this Service and the agreement
+                            that operates between You and the Company. These Terms and Conditions set out the rights
+                            and obligations of all users regarding the use of the Service.
+                        </p>
+                        <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance
+                            with these Terms and Conditions. These Terms and Conditions apply to all visitors, users
+                            and others who access or use the Service.
+                        </p>
+                        <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If
+                            You disagree with any part of these Terms and Conditions then You may not access the
+                            Service.
+                        </p>
+                        <p>You represent that you are over the age of 18. The Company does not permit those under 18
+                            to use the Service.
+                        </p>
+                        <p>Your access to and use of the Service is also conditioned on Your acceptance of and
+                            compliance with the Privacy Policy of the Company. Our Privacy Policy describes Our
+                            policies and procedures on the collection, use and disclosure of Your personal
+                            information when You use the Application or the Website and tells You about Your privacy
+                            rights and how the law protects You. Please read Our Privacy Policy carefully before
+                            using Our Service.
+                        </p>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
