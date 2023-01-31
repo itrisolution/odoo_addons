@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="dark_mode_button">
+        <div>
+            <a id="dark_button" href="#" title="Conversations" role="button" aria-haspopup="true" aria-expanded="false">
+                <i t-att-class="(widget.colorScheme === 'dark') ? 'fa fa-sun-o' : 'fa fa-moon-o'" role="img" aria-label="Theme" title="Please wait..."/>
+            </a>
+        </div>
+    </t>
+</templates>
