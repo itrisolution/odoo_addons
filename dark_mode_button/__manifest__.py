@@ -18,6 +18,7 @@
             '/dark_mode_button/static/src/xml/dark_mode_button.xml',
         ],
     },
+    'images': ['static/description/banner.gif'],
     'sequence': -1,
     'license': 'LGPL-3',
     'installable': True,
