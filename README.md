@@ -1,2 +1,2 @@
-# default_product_image
-This module will help you to add default image to products with no images.
+# ItriSol addons for Odoo (formerly OpenERP)
+Various Odoo modules developed by the ItriSol team.
